@@ -1,25 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import {useState} from 'react';
+// Não é necessário especificar o index.js porque ele já vai procurar por um index automaticamente na pasta
+import Logon from './pages/Logon';
+import './global.css'
+
+import Routes from './routes'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello OmniStack.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // Sempre tem que rodear com alguma tag estrutural
+    <Routes />
   );
 }
 
