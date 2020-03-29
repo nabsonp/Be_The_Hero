@@ -1,6 +1,7 @@
 // Importando o módulo express
 const express = require('express');
 const OngController = require('./controllers/OngController');
+const ProfileController = require('./controllers/ProfileController');
 const IncidentsController = require('./controllers/IncidentsController');
 
 // Desacopla as rotas do express em um nova variável
@@ -10,6 +11,9 @@ const routes = express.Router();
 routes.post('/ongs', OngController.create);
 // Listagem de ONGs
 routes.get('/ongs', OngController.index);
+
+//Listagem de Incidents da ONG logada
+routes.get('/profile',ProfileController.index);
 
 // Criação de novo Incident
 routes.post('/incidents', IncidentsController.create);
