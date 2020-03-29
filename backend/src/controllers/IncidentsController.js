@@ -30,9 +30,12 @@ module.exports = {
 
         // Busca com paginação
         const incidents = await connection('incidents')
+            .join('ongs','ongs.id','=','incidents.ong_id')
             .limit(5)
             .offset((page-1)*5)
-            .select('*');
+            .select(['incidents.*','ongs.nome', 
+                'ongs.email', 'ongs.whatsapp',
+                'ongs.city','ongs.uf']);
     
         // Coloca o número de registros no Header, onde é mais comum estar
         // Podia ser também 'X-Total-Pages'
