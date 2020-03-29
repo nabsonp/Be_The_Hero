@@ -8,15 +8,15 @@ const routes = express.Router();
 
 // Criação de nova ONG
 routes.post('/ongs', OngController.create);
-
 // Listagem de ONGs
 routes.get('/ongs', OngController.index);
 
 // Criação de novo Incident
 routes.post('/incidents', IncidentsController.create);
-
 // Listagem de Incidentss
 routes.get('/incidents', IncidentsController.index);
+// Deletando um Incident
+routes.get('/incidents/:id', IncidentsController.delete);
 
 // Exporta a variável routes desse arquivo para ser importada
 //    pelo index.js
