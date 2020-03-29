@@ -1,6 +1,7 @@
 // Importando o módulo express
 const express = require('express');
 const OngController = require('./controllers/OngController');
+const SessionController = require('./controllers/SessionController');
 const ProfileController = require('./controllers/ProfileController');
 const IncidentsController = require('./controllers/IncidentsController');
 
@@ -14,6 +15,9 @@ routes.get('/ongs', OngController.index);
 
 //Listagem de Incidents da ONG logada
 routes.get('/profile',ProfileController.index);
+
+// Login
+routes.post('/sessions', SessionController.create);
 
 // Criação de novo Incident
 routes.post('/incidents', IncidentsController.create);
