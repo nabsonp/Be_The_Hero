@@ -23,8 +23,20 @@ module.exports = {
     },
 
     async index (request, response) {
-        const incidents = await connection('incidents').select('*');
+        const {page = 1} = request.query;
+
+        // Retorna o número de registros na tabela
+        const [count] = await connection('incidents').count();
+
+        // Busca com paginação
+        const incidents = await connection('incidents')
+            .limit(5)
+            .offset((page-1)*5)
+            .select('*');
     
+        // Coloca o número de registros no Header, onde é mais comum estar
+        // Podia ser também 'X-Total-Pages'
+        response.header('X-Total-Count', count['count(*)'])
         return response.json(incidents);
     },
 
