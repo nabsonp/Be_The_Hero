@@ -8,7 +8,7 @@
     display: flex;
     /* align-items alinha os itens verticalmente e o justify-contect, horizontalmente*/
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .logon-container section.form {
