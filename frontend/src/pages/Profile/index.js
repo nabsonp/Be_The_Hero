@@ -28,13 +28,13 @@ export default function Profile(props) {
 
     async function handleDeleteIncident(id) {
         try {
-            await api.delete(`incidents/${id}`, {
+            const response = await api.get(`incidents/${id}`, {
                 headers: {
                     Authorization: ongId
                 }
             })
 
-            setIncidents(incidents.filter(incident => incidents.id !== id));
+            setIncidents(incidents.filter(incident => incident.id != id));
 
         } catch(err) {
             alert('Erro ao deletar caso. Tente novamente.')
