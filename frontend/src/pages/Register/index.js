@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.css'
 import {FiArrowLeft} from 'react-icons/fi'
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import logoImg from '../../assets/logo.svg'
 import { useState } from 'react';
 import api from '../../services/api';
@@ -11,18 +11,21 @@ import api from '../../services/api';
 // Recebe um só parâmetro props com todas as propriedades passadas
 export default function Register(props) {
 
-    const [name, setName] = useState('');
+    const [nome, setName] = useState('');
     const [email, setEmail] = useState('');
     const [whatsapp, setWhatsapp] = useState('');
     const [city, setCity] = useState('');
     const [uf, setUf] = useState('');
 
-    function handleRegister(e) {
+    // Serve para fazer navegação
+    const history = useHistory();
+
+    async function handleRegister(e) {
 
         e.preventDefault();
 
         const data = {
-            name,
+            nome,
             email,
             whatsapp,
             city,
@@ -30,8 +33,10 @@ export default function Register(props) {
         };
 
         try {
-            const response = api.post('ongs', data);
-            alert(`Ò seu ID de acesso é ${response.data.id}`)
+            const response = await api.post('ongs', data);
+            console.log(response);
+            alert(`O seu ID de acesso é ${response.data.id}`);
+            history.push('/');
         } catch(error) {
             alert('Erro no cadastro. Tente novamente.');
         }
@@ -53,7 +58,7 @@ export default function Register(props) {
                 </Link>
             </section>
             <form onSubmit={handleRegister}>
-                <input placeholder="Nome da ONG" value={name} onChange = {e => setName(e.target.value)} />
+                <input placeholder="Nome da ONG" value={nome} onChange = {e => setName(e.target.value)} />
                 <input type="email" placeholder="E-mail" value={email} onChange = {e => setEmail(e.target.value)} />
                 <input placeholder="Whatsapp" value={whatsapp} onChange = {e => setWhatsapp(e.target.value)} />
                 <div className="input-group">
