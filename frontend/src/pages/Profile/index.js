@@ -28,7 +28,7 @@ export default function Profile(props) {
 
     async function handleDeleteIncident(id) {
         try {
-            await api.delete(`ìncideents/${id}`, {
+            await api.delete(`incidents/${id}`, {
                 headers: {
                     Authorization: ongId
                 }
@@ -64,13 +64,13 @@ export default function Profile(props) {
                 incidents.map(incident => (
                     <li key={incident.id}>
                         <strong>CASO:</strong>
-                        <p>incident.title</p>
+                        <p>{incident.title}</p>
 
                         <strong>DESCRIÇÃO</strong>
-                        <p>incident.description</p>
+                        <p>{incident.description}</p>
 
                         <strong>VALOR:</strong>
-                        <p>incident.value</p>
+                        <p>{incident.value}</p>
 
                         <button type='button'><FiTrash2 size={20} color='#a8a8b3' onClick={() => handleDeleteIncident(incident.id)} /></button>
                     </li>

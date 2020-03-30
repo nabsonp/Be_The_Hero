@@ -14,6 +14,8 @@ export default function NewIncident(props) {
     const ongId = localStorage.getItem('ongId');
     const history = useHistory();
 
+    console.log(ongId)
+
     async function handleIncident(e) {
         e.preventDefault();
 
@@ -26,7 +28,7 @@ export default function NewIncident(props) {
         try {
             await api.post('incidents', data, {
                 headers: {
-                    Authorization: ongId
+                    Authorization: ongId,
                 }
             })
             history.push('/profile');

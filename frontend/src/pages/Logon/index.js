@@ -23,7 +23,7 @@ export default function Logon(props) {
     try {
       const response = await api.post('sessions',{id});
       // Salvando o ID e o nome na aplicação
-      localStorage.setItem('ongID',id);
+      localStorage.setItem('ongId',id);
       localStorage.setItem('ongName',response.data.nome);
       history.push('/profile')
     } catch(err) {
