@@ -34,7 +34,6 @@ export default function Register(props) {
 
         try {
             const response = await api.post('ongs', data);
-            console.log(response);
             alert(`O seu ID de acesso é ${response.data.id}`);
             history.push('/');
         } catch(error) {
