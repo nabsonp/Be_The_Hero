@@ -1,6 +1,8 @@
 // Importando o módulo express
 const express = require('express');
 
+const { errors } = require('celebrate');
+
 // Importando o Cors
 const cors = require('cors')
 
@@ -21,5 +23,8 @@ app.use(cors());
 // Especifica que a aplicação utilize as rotas na var. routes
 app.use(routes);
 
+// Usado para enviar um JSON como erro
+app.use(errors());
+
 // A aplicação vai ouvir a porta 3333
-app.listen(3333);
+module.exports = app;
