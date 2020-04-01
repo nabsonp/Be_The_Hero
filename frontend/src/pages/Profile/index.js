@@ -70,7 +70,7 @@ export default function Profile(props) {
                         <p>{incident.description}</p>
 
                         <strong>VALOR:</strong>
-                        <p>{incident.value}</p>
+                        <p>R$ {incident.value},00</p>
 
                         <button type='button'><FiTrash2 size={20} color='#a8a8b3' onClick={() => handleDeleteIncident(incident.id)} /></button>
                     </li>
